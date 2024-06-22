@@ -1,9 +1,6 @@
 from unittest.mock import patch
 
-from mysql.connector import errors
-
 from django.core.management import call_command
-from django.db.utils import OperationalError
 from django.test import SimpleTestCase
 
 

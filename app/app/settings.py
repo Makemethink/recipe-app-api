@@ -83,7 +83,10 @@ DATABASES = {
         'USER': os.environ.get('DB_USER'),      # Replace with your MySQL username
         'PASSWORD': os.environ.get('DB_PASS'),  # Replace with your MySQL password
         'HOST': os.environ.get('DB_HOST'),      # Replace with your MySQL host address
-        'PORT': '3306',                         # Replace with your MySQL port
+        'PORT': 3306,                         # Replace with your MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
 }
 

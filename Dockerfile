@@ -19,7 +19,13 @@ WORKDIR /app
 EXPOSE 8000
 
 ARG DEV=false
+
 RUN python -m venv /py && \
+    apk update && \
+    apk add --no-cache \
+    python3-dev \
+    mariadb-dev \
+    build-base && \
 	/py/bin/pip install --upgrade pip && \
 	/py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
