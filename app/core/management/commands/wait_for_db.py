@@ -22,7 +22,7 @@ class Command(BaseCommand):
         db_up: bool = False
         while db_up is False:
             try:
-                if max_count > 10:
+                if count > max_count:
                     break
 
                 conn = mysql.connect(  # Replace with your database name
