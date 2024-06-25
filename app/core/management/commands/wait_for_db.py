@@ -32,7 +32,7 @@ class Command(BaseCommand):
                     port=3306)
 
                 cursor = conn.cursor()
-                cursor.execute(f"CREATE DATABASE {os.environ.get('DB_NAME')}")
+                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {os.environ.get('DB_NAME')}")
                 conn.close()
                 print('Successfully connected to the database')
                 db_up = True
