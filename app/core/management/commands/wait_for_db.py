@@ -3,9 +3,8 @@ Django command to wait for the database to be available.
 """
 import time
 import os
-import MySQLdb as mysql
+import MySQLdb as Mysql
 from django.core.management.base import BaseCommand
-from django.db.utils import OperationalError
 
 
 class Command(BaseCommand):
@@ -25,22 +24,28 @@ class Command(BaseCommand):
                 if count > max_count:
                     break
 
-                conn = mysql.connect(  # Replace with your database name
-                    user=os.environ.get('DB_USER'),  # Replace with your MySQL username
-                    password=os.environ.get('DB_PASS'),  # Replace with your MySQL password
-                    host=os.environ.get('DB_HOST'),  # Replace with your MySQL host address
-                    port=3306)
+                # Fetch environment variables
+                db_user = os.environ.get('DB_USER')
+                db_pass = os.environ.get('DB_PASS')
+                db_host = os.environ.get('DB_HOST')
+                db_name = os.environ.get('DB_NAME')
+
+                # Establish MySQL connection
+                conn = Mysql.connect(
+                    user=db_user,
+                    password=db_pass,
+                    host=db_host,
+                    port=3306
+                )
 
                 cursor = conn.cursor()
-                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {os.environ.get('DB_NAME')}")
+                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
                 conn.close()
                 print('Successfully connected to the database')
                 db_up = True
-            except mysql.Error as e:
+            except Mysql.Error as e:
                 print(f'Error connecting to the database: {e}')
                 count = count+1
                 time.sleep(5)
 
         self.stdout.write(self.style.SUCCESS('Database available'))
-
-
