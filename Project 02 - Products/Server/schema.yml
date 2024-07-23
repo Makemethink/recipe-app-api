@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: Django Title
+  version: 0.0.0
+paths:
+  /media/add/:
+    post:
+      operationId: media_add_create
+      tags:
+      - media
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /media/delete/{media_id}:
+    delete:
+      operationId: media_delete_destroy
+      parameters:
+      - in: path
+        name: media_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - media
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /media/list/:
+    get:
+      operationId: media_list_retrieve
+      tags:
+      - media
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /media/show/{media_id}:
+    get:
+      operationId: media_show_retrieve
+      parameters:
+      - in: path
+        name: media_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - media
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /media/update/{media_id}:
+    put:
+      operationId: media_update_update
+      parameters:
+      - in: path
+        name: media_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - media
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

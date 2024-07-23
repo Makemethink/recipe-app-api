@@ -1,0 +1,17 @@
+This to follow :
+--------------
+
+00. Create virtualenv / git init
+01. Create requirements.txt
+02. Install necessary things
+03. create project and app
+04. make an entry in installed app in settings for app and thridparty modules
+05. Choose database and configure accordingly
+06. Make a model
+07. Make a serializer
+08. configure URLS
+09. do migration
+10. Create a superuser
+11. Register the model to admin
+12. Navigate to shell or in UI and add sample data to the model
+13. SwaggerUI and Spectacular integration for API
